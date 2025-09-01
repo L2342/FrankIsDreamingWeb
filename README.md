@@ -2,7 +2,7 @@
 Pagina web proyecto Programación web
 
 
-![Banner del juego](./preview/banner.png)
+![Banner del juego]()
 
 
 
@@ -14,9 +14,8 @@ Pagina web proyecto Programación web
 
 
 ## Preview
-*(Agregaremos capturas una vez tengamos el diseño terminado)*  
-![Preview](./preview/mockup.png)
-
+![Preview](./screen1.jpeg)
+![Preview](./screen2.jpeg)
 
 
 
