@@ -1,8 +1,6 @@
 export default function Subscribe() {
   return (
     <section className="relative bg-gray-100 dark:bg-black flex flex-col items-center overflow-hidden">
-      
-      {/* Frank flotando detrás de la franja */}
       <div className=" top-0 left-1/2 transform translate-y-[55px] z-20 pointer-events-none">
         <img
           src="/assets/frank-suscribe.PNG"
@@ -10,9 +8,8 @@ export default function Subscribe() {
           className="w-[900px] max-w-full"
         />
       </div>
-
-      {/* Franja completa */}
-      <div className="relative z-10 w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-24 px-6 md:px-16 text-center">
+ 
+      <div id="suscribete" className="relative z-10 w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-24 px-6 md:px-16 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
           Suscríbete a las novedades
         </h2>

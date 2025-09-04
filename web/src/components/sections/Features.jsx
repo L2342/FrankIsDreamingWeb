@@ -11,32 +11,32 @@ import feature3 from "/assets/feature3.jpg";
 const features = [
   {
     img: feature1,
-    title: "Mundos Oníricos",
-    desc: "Adéntrate en escenarios que parecen sacados de un sueño: teatros iluminados por máscaras vivientes, jardines imposibles y pasillos que no terminan nunca."
-  },
-  {
-    img: feature2,
-    title: "Personajes Únicos",
+    title: "Personajes Enigmáticos",
     desc: "Conoce a curiosos aliados y a extraños enemigos que parecen salidos de un cuento retorcido. Nada es lo que parece, y cada encuentro cambiará tu viaje."
   },
   {
+    img: feature2,
+    title: "Mundos Oníricos",
+    desc: "Escenarios surrealistas que cambian sutilmente, donde las reglas no siempre son lógicas. Observa, interpreta y deja que la atmósfera te guíe."
+  },
+  {
     img: feature3,
-    title: "Puzzles y Aventuras",
-    desc: "Resuelve acertijos extraños, manipula objetos mágicos y enfréntate a pruebas que desafían no solo tu lógica, sino también tu percepción del mundo."
+    title: "Enfrenta tus Miedos, Descifra Pistas",
+    desc: "Personajes ambiguos, objetos con significado y decisiones que te llevan a revelar qué mantiene a Frank atrapado en sus sueños."
   }
 ];
 
 export default function Features() {
   return (
-    <section className="relative py-32 overflow-hidden" style={{
+    <section className="relative py-32 overflow-hidden"  id="features" style={{
       backgroundColor: "#090157",
       background: "linear-gradient(0deg,rgba(0, 0, 0, 1) 0%, rgba(4, 17, 112, 1) 100%)"
     }}>
 
-      {/* Patrón/textura */}
+ 
       <div className="absolute inset-0 opacity-20 bg-[url('/assets/pattern-dark.png')] mix-blend-overlay"></div>
-      
-      {/* Decoraciones etéreas */}
+
+
       <div className="absolute -top-20 -left-20 w-[32rem] h-[32rem] bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-[36rem] h-[36rem] bg-pink-400/10 rounded-full blur-[120px] animate-pulse"></div>
 
@@ -44,13 +44,19 @@ export default function Features() {
         Sumérgete en un sueño profundo
       </h2>
 
+      <div className="max-w-4xl mx-auto px-6 mb-28">
+        <p className="text-center text-2xl font-['Cormorant_Garamond'] text-gray-200 leading-relaxed">
+          Explora recuerdos, resuelve símbolos y descubre qué mantiene a Frank flotando entre la luz y la penumbra.
+          Un viaje melancólico con arte ilustrado y música envolvente.
+        </p>
+      </div>
+
       <div className="container mx-auto px-10 space-y-40 relative z-10">
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-20 items-center ${
-              index % 2 !== 0 ? "md:[&>div:first-child]:order-2" : ""
-            }`}
+            className={`grid grid-cols-1 md:grid-cols-2 gap-20 items-center ${index % 2 !== 0 ? "md:[&>div:first-child]:order-2" : ""
+              }`}
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -58,7 +64,7 @@ export default function Features() {
           >
             {/* Imagen más grande con aura */}
             <div className="relative flex justify-center">
-                
+
               <div className="absolute inset-0 bg-gradient-radial from-yellow-300/20 via-transparent to-transparent rounded-3xl blur-2xl"></div>
               <img
                 src={feature.img}

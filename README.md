@@ -2,7 +2,7 @@
 Pagina web proyecto Programación web
 
 
-![Banner del juego](./preview/banner.png)
+![Banner del juego](./preview/banner.jpeg)
 
 
 

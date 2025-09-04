@@ -7,7 +7,7 @@ export default function Header() {
         <a href="#features" className="hover:text-purple-400">Features</a>
         <a href="#personajes" className="hover:text-purple-400">Personajes</a>
         <a href="#trailer" className="hover:text-purple-400">Tráiler</a>
-        <a href="#descarga" className="hover:text-purple-400">Descárgalo</a>
+        <a href="#suscribete" className="hover:text-purple-400">Suscribete</a>
       </nav>
     </header>
   );

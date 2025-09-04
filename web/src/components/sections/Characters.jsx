@@ -4,20 +4,20 @@ import rabbit from "/assets/char-rabbit.jpeg";
 import fox from "/assets/char-fox.jpeg";
 
 const characters = [
-  { 
-    img: frank, 
+  {
+    img: frank,
     name: "Frank",
-    desc: "El soñador perdido en un mundo extraño, armado solo con su linterna." 
+    desc: "Atrapado en una rutina gris donde las expectativas familiares y las presiones sociales han enterrado su verdadero yo, Frank encuentra refugio en un mundo onírico vibrante donde puede ser quien realmente es."
   },
-  { 
-    img: rabbit, 
+  {
+    img: rabbit,
     name: "El Guia",
-    desc: "Un mago enigmático que juega con ilusiones y acertijos." 
+    desc: "Una misteriosa entidad onírica que se convierte en el compañero más cercano de Frank durante su travesía por el mundo de los sueños. Conoce todos los secretos del reino onírico y promete mostrarle a Frank maravillas que nunca podría experimentar despierto."
   },
-  { 
-    img: fox, 
+  {
+    img: fox,
     name: "Jinks",
-    desc: "Criatura astuta y mística, de ojos brillantes y naturaleza cambiante." 
+    desc: '"Ohh… ¿perdido otra vez? Me encanta cuando los humanos se enredan en sus propios sueños. Jejeje… ¿Quieres un consejo? No sigas la luz… o sí. Yo qué sé, yo lo sé todo y nada al mismo tiempo. Lo único seguro es que yo estaré allí… esperándote en las sombras, riéndome bajito."'
   }
 ];
 
@@ -27,14 +27,13 @@ export default function Characters() {
   return (
     <section id="personajes" className="py-28 bg-black text-white text-center">
       <h2 className="text-3xl font-['Cinzel_Decorative'] mb-16 drop-shadow-xl">
-        Conoce a los Personajes
+        Voces que habitan el sueño
       </h2>
-      
-      {/* Contenedor de personajes */}
+
       <div className="flex flex-wrap justify-center gap-16">
         {characters.map((char, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className="w-80 flex flex-col items-center cursor-pointer"
             onMouseEnter={() => setActiveDesc(char.desc)}
             onMouseLeave={() => setActiveDesc("")}
@@ -49,13 +48,14 @@ export default function Characters() {
         ))}
       </div>
 
-      {/* Panel de descripción */}
       <div className="mt-14 min-h-[5rem] flex items-center justify-center">
-        {activeDesc && (
-          <p className="max-w-3xl text-xl text-gray-300 font-['Cormorant_Garamond'] bg-white/5 border border-yellow-200/20 rounded-xl px-6 py-4 backdrop-blur-md shadow-lg transition-all duration-500">
-            {activeDesc}
-          </p>
-        )}
+        <div className="max-w-3xl w-full min-h-[7.5rem] flex items-center justify-center">
+          {activeDesc && (
+            <p className="text-xl text-gray-300 font-['Cormorant_Garamond'] bg-white/5 border border-yellow-200/20 rounded-xl px-6 py-4 backdrop-blur-md shadow-lg transition-all duration-500">
+              {activeDesc}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

@@ -1,11 +1,11 @@
-import Header from './layouts/Header.jsx';
-import Footer from './layouts/Footer.jsx';
-import Hero from './sections/Hero.jsx';
-import Features from './sections/Features.jsx';
-import Characters from './sections/Characters.jsx';
-import Trailer from './sections/Trailer.jsx';
-import Subscribe from './sections/Subscribe.jsx';
-import SubscribeForm from './sections/SubscribeForm.jsx';
+import Header from './components/layouts/Header.jsx';
+import Footer from './components/layouts/Footer.jsx';
+import Hero from './components/sections/Hero.jsx';
+import Features from './components/sections/Features.jsx';
+import Characters from './components/sections/Characters.jsx';
+import Trailer from './components/sections/Trailer.jsx';
+import Subscribe from './components/sections/Subscribe.jsx';
+
 
 export default function App() {
   return (

@@ -3,7 +3,7 @@ import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
     
 export default function Hero() {
     return (
-        <section className="relative w-full h-screen overflow-hidden">
+        <section className="relative w-full h-screen overflow-hidden" id="inicio">
             <ParallaxBanner style={{ aspectRatio: "2 / 1" }} className="h-full">
 
                 {/* Capa 1: Fondo cielo */}
