@@ -1,25 +1,14 @@
-import Header from './components/layouts/Header.jsx';
-import Footer from './components/layouts/Footer.jsx';
-import Hero from './components/sections/Hero.jsx';
-import Features from './components/sections/Features.jsx';
-import Characters from './components/sections/Characters.jsx';
-import Trailer from './components/sections/Trailer.jsx';
-import Subscribe from './components/sections/Subscribe.jsx';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import SubscribePage from "./pages/suscribePage.jsx";
 
 export default function App() {
   return (
-    <div className="font-sans text-white bg-gray-900">
-      <Header />
-      <main>
-        <Hero />
-        <Features />
-        <Characters />
-        <Trailer />
-        <Subscribe />
-        
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/subscribe" element={<SubscribePage />} />
+      </Routes>
+    </Router>
   );
 }

@@ -38,13 +38,11 @@ export default function Hero() {
             id="inicio"
         >
             <ParallaxBanner style={{ aspectRatio: "2 / 1" }} className="h-full">
-
-                {/* Capa 1: Fondo cielo */}
                 <ParallaxBannerLayer
                     image="/assets/cielo.PNG"
                     speed={-60}
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/cielo.PNG)',
@@ -58,7 +56,7 @@ export default function Hero() {
                     speed={14}
                     className="z-11"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center scale-70"
                         style={{
                             backgroundImage: 'url(/assets/titulo.PNG)',
@@ -68,11 +66,10 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 2: Reloj fondo */}
                 <ParallaxBannerLayer
                     speed={-30}
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/relojfondo1.PNG)',
@@ -82,12 +79,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 3: Carta As */}
                 <ParallaxBannerLayer
                     speed={-10}
                     className="z-10"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/cartaAs.PNG)',
@@ -97,12 +93,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 4: Carta azul 1 */}
                 <ParallaxBannerLayer
                     speed={-20}
                     className="opacity-75"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/cartaazul1.PNG)',
@@ -112,12 +107,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 5: Carta 10 Corazones */}
                 <ParallaxBannerLayer
                     speed={-8}
                     className="z-10"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/carta10.PNG)',
@@ -127,12 +121,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 6: Mariposa */}
                 <ParallaxBannerLayer
                     speed={-22}
                     className="opacity-50"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/mariposa.PNG)',
@@ -142,12 +135,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 7: Molino */}
                 <ParallaxBannerLayer
                     speed={-10}
                     className="opacity-50"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/molino.PNG)',
@@ -157,12 +149,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 8: Frank */}
                 <ParallaxBannerLayer
                     speed={-15}
                     className="scale-80"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/frank.PNG)',
@@ -172,12 +163,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 9: Carta azul 2 */}
                 <ParallaxBannerLayer
                     speed={-25}
                     className="opacity-50"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/cartaazul2.PNG)',
@@ -187,12 +177,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 10: Reloj 2 */}
                 <ParallaxBannerLayer
                     speed={-15}
                     className="opacity-50"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/relojfondo2.PNG)',
@@ -202,11 +191,10 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 11: Carta Rey */}
                 <ParallaxBannerLayer
                     speed={-8}
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/cartaRey.PNG)',
@@ -216,12 +204,11 @@ export default function Hero() {
                     />
                 </ParallaxBannerLayer>
 
-                {/* Capa 12: Nubes foreground */}
                 <ParallaxBannerLayer
                     speed={20}
                     className="z-20"
                 >
-                    <div 
+                    <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
                         style={{
                             backgroundImage: 'url(/assets/nubes.PNG)',
@@ -229,12 +216,6 @@ export default function Hero() {
                             transition: 'transform 0.1s ease-out'
                         }}
                     />
-                </ParallaxBannerLayer>
-
-                <ParallaxBannerLayer speed={0}>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-                        {/* Contenido adicional aquí si es necesario */}
-                    </div>
                 </ParallaxBannerLayer>
             </ParallaxBanner>
         </section>

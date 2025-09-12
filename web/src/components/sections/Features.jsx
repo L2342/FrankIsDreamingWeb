@@ -1,9 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-// Importa Google Fonts en tu index.html o layout principal:
-// 
-
 import feature1 from "/assets/feature1.jpg";
 import feature2 from "/assets/feature2.jpeg";
 import feature3 from "/assets/feature3.jpg";
@@ -62,7 +58,6 @@ export default function Features() {
             transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            {/* Imagen más grande con aura */}
             <div className="relative flex justify-center">
 
               <div className="absolute inset-0 bg-gradient-radial from-yellow-300/20 via-transparent to-transparent rounded-3xl blur-2xl"></div>
@@ -73,7 +68,6 @@ export default function Features() {
               />
             </div>
 
-            {/* Texto */}
             <div className="relative bg-white/5 backdrop-blur-xl p-14 rounded-3xl shadow-2xl border border-white/10">
               <div className="absolute -top-7 left-7 text-yellow-300/40 text-6xl select-none font-['Cinzel_Decorative']">
                 ✦
