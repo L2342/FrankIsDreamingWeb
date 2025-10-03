@@ -123,7 +123,7 @@ export default function Hero() {
 
                 <ParallaxBannerLayer
                     speed={-22}
-                    className="opacity-50"
+                    className="z-10 opacity-75"
                 >
                     <div
                         className="absolute inset-0 w-full h-full bg-cover bg-center"
