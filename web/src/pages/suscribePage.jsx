@@ -274,17 +274,15 @@ export default function DreamNewsletter() {
                   abiertas para ti.
                 </p>
                 <div className="mt-8 pt-4">
-                  <button
-                    onClick={() => {
-                      setStep(1);
-                      setEmail('');
-                      setError('');
-                    }}
-                    className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-base lg:text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-500/50 uppercase tracking-wide"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
-                    Regresar al Portal
-                  </button>
+                  <Link to="/">
+                    <button
+                      className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-base lg:text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-purple-500/50 uppercase tracking-wide"
+                      style={{ fontFamily: "'Playfair Display', serif" }}
+                    >
+                      Regresar al Portal
+                    </button>
+                  </Link>
+
                 </div>
               </div>
             )}
