@@ -4,6 +4,7 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 const commentSchema = new Schema({
     devlogId: {type: Schema.Types.ObjectId, ref: 'Devlog', required: true},
     userId: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    // el autor tiene que depender del userId 
     content: {type: String, required: true},
     createdAt: {type: Date, default: Date.now},
 })
