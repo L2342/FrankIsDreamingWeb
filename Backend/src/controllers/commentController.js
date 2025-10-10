@@ -7,12 +7,20 @@ import paginate from "mongoose-paginate-v2";
 
 
 const publishComment = async (req, res) => {
-    const { devlogId, author, content } = req.body;
-    if (!devlogId || !author || !content) {
+    if (!req.body) {
+        return res.status(400).json({ message: 'No se han enviado datos' });
+    }
+    
+    const { devlogId, content } = req.body;
+    if (!mongoose.Types.ObjectId.isValid(devlogId)) {
+        return res.status(400).json({ message: 'ID de devlog no válido' });
+    }
+    const userId = req.user.sub.id;
+    if (!devlogId || !userId || !content) {
         return res.status(400).json({ message: 'Faltan datos obligatorios' });
     }
     try {
-        const newComment = new Comment({ devlog: devlogId, userId, content });
+        const newComment = new Comment({ devlogId, userId, content });
         const savedComment = await newComment.save();
         if (!savedComment) {
             return res.status(400).json({ message: 'No se ha podido publicar el comentario' });
@@ -77,4 +85,5 @@ const deleteComment = async (req, res) => {
 }
 
 export {
-    publishComment,deleteComment};   
+    publishComment,deleteComment,getComments
+};

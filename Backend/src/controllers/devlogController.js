@@ -1,10 +1,16 @@
 import Devlog from "../models/Devlog";
 import path from "path";
 import fs from "fs";
+import mongoose from "mongoose";
+import Comment from "../models/Comments.ts";
+import { uploadDir } from "../middlewares/upload.js";
 import paginate from "mongoose-paginate-v2";
-import { populate } from "dotenv";
+
 
 const createDevlog = async (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({ message: 'No se han enviado datos' });
+    }
     const { title, content } = req.body;
     if (!title || !content) {
         return res.status(400).json({ message: 'Faltan datos obligatorios' });
@@ -35,7 +41,7 @@ const editDevlog = async (req, res) => {
         return res.status(400).json({ message: 'Faltan datos obligatorios' });
     }
     try {
-        const updatedDevlog = await Devlog.findByIdAndUpdate(devlogId, { title, content }, { new: true });
+        const updatedDevlog = await Devlog.findByIdAndUpdate(devlogId, { title, content, updatedAt: Date.now() }, { new: true });
         if (!updatedDevlog) {
             return res.status(404).json({ message: 'Devlog no encontrado' });
         }
@@ -74,6 +80,7 @@ const getDevlogs = async (req, res) => {
 
 const upload = (req, res) => {
     //Verificar que se ha subido  al menos un archivo
+
     const devlogId = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(devlogId)) {
         return res.status(400).json({ message: 'ID de devlog no válido' });
@@ -92,7 +99,7 @@ const upload = (req, res) => {
             return res.status(400).json({ message: 'Extensión de archivo no válida' });
         }
         // Si es valida actualizar en la base de datos
-        const updatedDevlog = await Devlog.findByIdAndUpdate(devlogId, { image: file.filename }, { new: true });
+        const updatedDevlog = await Devlog.findByIdAndUpdate(devlogId, { $push: { images: file.filename } }, { new: true });
         if (!updatedDevlog) {
             fs.unlinkSync(path.resolve(file.path));
             return res.status(500).json({ message: 'Error al actualizar el devlog con la imagen', error: 'Devlog no encontrado' });
@@ -102,32 +109,55 @@ const upload = (req, res) => {
     return res.status(200).json({
         status: 'success',
         message: 'Imagen subida y devlog actualizado correctamente',
-        data: updatedDevlog
     });
 }
 
 
 
 const deleteDevlog = async (req, res) => {
+    const uploadDir = path.join(process.cwd(), "media", "devlogs");
     const devlogId = req.params.id;
+
     if (!mongoose.Types.ObjectId.isValid(devlogId)) {
-        return res.status(400).json({ message: 'ID de devlog no válido' });
+        return res.status(400).json({ message: "ID de devlog no válido" });
     }
-    try {
-        //Debemos eliminar tambien los comentarios asociados a este devlog
-        await Comment.deleteMany({ devlog: devlogId });
+    
+    try{
+        await Comment.deleteMany({ devlogId: devlogId });
+    }catch(error){
+        return res.status(500).json({ message: "Error al eliminar los comentarios", error: error.message });
+    }
+    
+    try{
+        const devlog = await Devlog.findById(devlogId);
+        if (devlog && devlog.images && devlog.images.length > 0) {
+            devlog.images.forEach((image) => {
+                const filePath = path.resolve(uploadDir, image);
+                if (fs.existsSync(filePath)) {
+                    fs.unlinkSync(filePath);
+                }
+            });
+        }
+    }catch(error){
+        return res.status(500).json({ message: "Error al eliminar las imágenes", error: error.message });
+    }
+    
+    try{
         const deletedDevlog = await Devlog.findByIdAndDelete(devlogId);
         if (!deletedDevlog) {
-            return res.status(404).json({ message: 'Devlog no encontrado' });
+            return res.status(404).json({ message: "Devlog no encontrado" });
         }
-        return res.status(200).json({
-            status: 'success',
-            message: 'Devlog eliminado correctamente',
-            data: deletedDevlog
-        });
-    } catch (error) {
-        return res.status(500).json({ message: 'Error al eliminar el devlog', error: error.message });
+    }catch(error){
+        return res.status(500).json({ message: "Error al eliminar el devlog", error: error.message });
     }
-}
+
+    return res.status(200).json({
+        status: "success",
+        message: "Devlog eliminado correctamente",
+    });
+};
 
 export default { createDevlog, editDevlog, getDevlogs, deleteDevlog, upload };
+
+    
+

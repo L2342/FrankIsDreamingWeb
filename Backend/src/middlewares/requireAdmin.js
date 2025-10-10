@@ -1,3 +1,4 @@
+// Middleware to require admin role 
 export const requireAdmin = (req, res, next) => {
     if (req.user?.sub?.role === 'admin') {
         next();
@@ -8,3 +9,4 @@ export const requireAdmin = (req, res, next) => {
         });
     }
 }
+
