@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/api/users', userRoutes);
 app.use('/api/devlogs', devlogRoutes);
-app.use('/api/comments', commentRoutes);
+app.use('/api/devlogs', commentRoutes);
 
 app.get('/', (req, res) => {
     res.send('Servidor funcionando correctamente');

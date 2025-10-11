@@ -15,7 +15,9 @@ const register = async (req, res) => {
         });
     }
     // Comprobamos que el usuario no exista ya en la base de datos
-    const userExist = await User.findOne({ email: email, username: username });
+    const userExist = await User.findOne({
+        $or: [{ email: email }, { username: username }]
+    });
     if (userExist) {
         return res.status(400).send({
             status: "error",
@@ -80,11 +82,11 @@ const login = async (req, res) => {
 }
 
 // Ver información del usuario
-const profile = async(req,res) => {
+const profile = async (req, res) => {
     const idUser = req.user.sub.id;
-    try{
-        const user = await User.findById(idUser).select('-password -__v -role');
-        if(!user){
+    try {
+        const user = await User.findById(idUser).select('-password -__v');
+        if (!user) {
             return res.status(404).send({
                 status: "error",
                 message: "Usuario no encontrado"
@@ -103,7 +105,7 @@ const profile = async(req,res) => {
 }
 
 //Editar información del usuario
-const update = async(req,res) => {
+const update = async (req, res) => {
     const idUser = req.user.sub.id;
     const params = req.body;
     //Eliminar campos que no quiero actualizar
@@ -119,18 +121,20 @@ const update = async(req,res) => {
     delete params.sub;
     // Solo va a poder cambiar username y email
     const validate = validator.validateUpdate(params);
-    if(validate.length > 0){
+    if (validate.length > 0) {
         return res.status(400).send({
             status: "error",
             message: validate
         });
     }
-    try{
-        const userExist = await User.findOne({ $or: [
-            { email: params.email },
-            { username: params.username }
-        ]});
-        if(userExist){
+    try {
+        const userExist = await User.findOne({
+            $or: [
+                { email: params.email },
+                { username: params.username }
+            ]
+        });
+        if (userExist) {
             return res.status(400).send({
                 status: "error",
                 message: "Ya existe un usuario con esas credenciales"
@@ -142,9 +146,9 @@ const update = async(req,res) => {
             message: "Error al consultar el usuario"
         });
     }
-    try{
-        const userUpdated = await User.findByIdAndUpdate(idUser, params, {new: true}).select('-password -__v -role');
-        if(!userUpdated){
+    try {
+        const userUpdated = await User.findByIdAndUpdate(idUser, params, { new: true }).select('-password -__v -role');
+        if (!userUpdated) {
             return res.status(404).send({
                 status: "error",
                 message: "Usuario no encontrado"

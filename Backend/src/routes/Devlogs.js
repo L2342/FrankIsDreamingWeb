@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.post("/create", [checkAuth, requireAdmin], devlogController.createDevlog);
 router.put("/edit/:id", [checkAuth, requireAdmin], devlogController.editDevlog);
-router.get("/", [checkAuth], devlogController.getDevlogs);
+router.get("/", devlogController.getDevlogs);
+router.get("/:id", devlogController.getDevlogById);
 router.delete("/delete/:id", [checkAuth, requireAdmin], devlogController.deleteDevlog);
 router.post("/:id/upload", [checkAuth, requireAdmin, uploadMiddleware.array("files")], devlogController.upload);
 

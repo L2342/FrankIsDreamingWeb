@@ -78,9 +78,29 @@ const getDevlogs = async (req, res) => {
     }
 }
 
-const upload = (req, res) => {
-    //Verificar que se ha subido  al menos un archivo
+const getDevlogById = async (req, res) => {
+    const devlogId = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(devlogId)) {
+        return res.status(400).json({ message: 'ID de devlog no válido' });
+    }
+    try {
+        const devlog = await Devlog.findById(devlogId);
+        if (!devlog) {
+            return res.status(404).json({ message: 'Devlog no encontrado' });
+        }
+        //Mostrar los comentarios asociados al devlog
+        const comments = await Comment.find({ devlogId: devlogId });
+        return res.status(200).json({
+            status: 'success',
+            message: 'Devlog obtenido correctamente',
+            data: { devlog, comments }
+        });
+    } catch (error) {
+        return res.status(500).json({ message: 'Error al obtener el devlog', error: error.message });
+    }
+}
 
+const upload = (req, res) => {
     const devlogId = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(devlogId)) {
         return res.status(400).json({ message: 'ID de devlog no válido' });
@@ -98,7 +118,6 @@ const upload = (req, res) => {
             fs.unlinkSync(path.resolve(file.path));
             return res.status(400).json({ message: 'Extensión de archivo no válida' });
         }
-        // Si es valida actualizar en la base de datos
         const updatedDevlog = await Devlog.findByIdAndUpdate(devlogId, { $push: { images: file.filename } }, { new: true });
         if (!updatedDevlog) {
             fs.unlinkSync(path.resolve(file.path));
@@ -157,7 +176,7 @@ const deleteDevlog = async (req, res) => {
     });
 };
 
-export default { createDevlog, editDevlog, getDevlogs, deleteDevlog, upload };
+export default { createDevlog, editDevlog, getDevlogs, deleteDevlog, upload, getDevlogById };
 
     
 
